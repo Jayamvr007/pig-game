@@ -1,6 +1,6 @@
 var scores,current,activeplayer=0;
 
-var x;
+var x,f=0;
 function init(){
 
 scores=[0,0];
@@ -15,6 +15,15 @@ x=Math.floor(Math.random()*6)+1;
 document.querySelector('.dice').style.display = 'block';
 document.querySelector('.dice').src='dice'+x+'.jpg';
 console.log(x);
+if(scores[activeplayer]>=20){
+		document.querySelector('#name'+ activeplayer).innerHTML='<em>winner</em>';
+		init();
+			
+		}
+		
+document.querySelector('#name0').innerHTML="PLAYER 1";
+document.querySelector('#name1').innerHTML="PLAYER 2";
+
 if(x!==1)
 {
 roundscore+=x;
@@ -33,6 +42,10 @@ document.querySelector('#h').addEventListener('click',function(){
 	document.getElementById('current-'+activeplayer).innerHTML=roundscore;
 	if(scores[activeplayer]>=20){
 		document.querySelector('#name'+ activeplayer).innerHTML='<em>winner</em>';
+		init();
+		document.getElementById('total0').innerHTML=scores[0];
+		document.getElementById('total1').innerHTML=scores[1];
+
 		}
 	nxt();
 	
@@ -58,8 +71,10 @@ function nxt(){
 
 document.querySelector('#n').addEventListener('click',function(){
 	init();
-	document.getElementById('name0').textContent = "Player1";
-	document.getElementById('name1').textContent = "Player2";
+	document.getElementById('total0').innerHTML=scores[0];
+		document.getElementById('total1').innerHTML=scores[1];
+	document.getElementById('name0').textContent = "PLAYER1";
+	document.getElementById('name1').textContent = "PLAYER2";
 	document.getElementById('total0').textcontent=0;
 	document.getElementById('total1').textcontent=0;
 	document.getElementById('current-0').textcontent=0;
